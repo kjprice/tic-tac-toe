@@ -15,4 +15,9 @@ function doStuff(button) {
 
 window.onload = function () {
   doStuff(document.getElementById('the-button'));
+
+  document.querySelector('#tic-tac-toe').addEventListener('click', function (e) {
+    const cell = e.target;
+    cell.className = 'on';
+  });
 }
