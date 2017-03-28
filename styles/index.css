@@ -9,6 +9,22 @@ table#tic-tac-toe tr td {
   padding: 0px;
 }
 
+table#tic-tac-toe tr td:nth-child(1) {
+    border-left-width: 0px;
+}
+
+table#tic-tac-toe tr:nth-child(1) td {
+    border-top-width: 0px;
+}
+
+table#tic-tac-toe tr:last-child td {
+    border-bottom-width: 0px;
+}
+
+table#tic-tac-toe tr td:last-child {
+    border-right-width: 0px;
+}
+
 table#tic-tac-toe tr td.on {
   background: red;
 }
