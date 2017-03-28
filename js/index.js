@@ -38,6 +38,11 @@ function hasPlayerWon(currentPlayer) {
   const rows = table.querySelectorAll('tr');
   const columns = [];
   
+  /* top-left to bottom-right */
+  let diagonal1 = 0;
+  /* top-right to bottom-left */
+  let diagonal2 = 0;
+
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     const cells = row.querySelectorAll(`td.user${currentPlayer}`)
@@ -57,6 +62,24 @@ function hasPlayerWon(currentPlayer) {
           return true;
         }
       }
+    }
+    
+    /* check for diagonal1 */
+    if (row.querySelector(`td:nth-child(${i+1}).user${currentPlayer}`)) {
+      diagonal1++;
+    }
+    
+    if (diagonal1 == 3) {
+      return true;
+    }
+
+   /* check for diagonal2 */
+    if (row.querySelector(`td:nth-child(${3-i}).user${currentPlayer}`)) {
+      diagonal2++;
+    }
+    
+    if (diagonal2 == 3) {
+      return true;
     }
 
   }
