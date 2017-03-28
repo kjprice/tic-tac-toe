@@ -30,6 +30,13 @@ window.onload = function () {
     }
     changePlayer();
   });
+  
+  document.querySelector('#reset').addEventListener('click', function (e) {
+    const tableCells = document.querySelectorAll('#tic-tac-toe td');
+    for (let i = 0; i < tableCells.length; i++) {
+      tableCells[i].className = '';
+    }
+  });
 }
 
 function hasPlayerWon(currentPlayer) {
