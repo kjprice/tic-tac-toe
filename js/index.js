@@ -10,11 +10,17 @@
 
 let currentPlayer = 1;
 let gameOver = false;
+let usedTurns = 0;
 
 window.onload = function () {
   document.querySelector('#tic-tac-toe').addEventListener('click', function (e) {
     if (gameOver) {
       return;
+    }
+    
+    if (++usedTurns == 9) {
+      gameOver = true;
+      showMessage('No More Moves!');
     }
 
     const cell = e.target;
@@ -26,7 +32,7 @@ window.onload = function () {
     
     if (hasPlayerWon(currentPlayer)) {
       gameOver = true;
-      document.getElementById('output').innerHTML = 'You Win!';
+      showMessage('You Win!');
     }
     changePlayer();
   });
@@ -36,7 +42,15 @@ window.onload = function () {
     for (let i = 0; i < tableCells.length; i++) {
       tableCells[i].className = '';
     }
+    
+    gameOver = false;    
+    usedTurns = 0;
+    showMessage('');
   });
+}
+
+function showMessage(message) {
+  document.getElementById('output').innerHTML = message;
 }
 
 function hasPlayerWon(currentPlayer) {
@@ -74,7 +88,6 @@ function hasPlayerWon(currentPlayer) {
     if (row.querySelector(`td:nth-child(${i+1}).user${currentPlayer}`)) {
       diagonal1++;
     }
-    
     if (diagonal1 == 3) {
       return true;
     }
@@ -83,7 +96,6 @@ function hasPlayerWon(currentPlayer) {
     if (row.querySelector(`td:nth-child(${3-i}).user${currentPlayer}`)) {
       diagonal2++;
     }
-    
     if (diagonal2 == 3) {
       return true;
     }
