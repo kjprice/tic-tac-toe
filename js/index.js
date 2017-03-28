@@ -1,23 +1,35 @@
-let isOn = false;
+/*
+** TODO:
+** Decide whose turn it is
+** Let user click on empty block
+** Change ownership of block to user
+** Determine if user has won after selecting block
+** If not won, Decide whose turn it is
+** Repeat...
+*/
 
-function doStuff(button) {
-  if (isOn) {
-    button.style.backgroundColor = 'black';
-    isOn = false;
-    document.getElementById('output').innerHTML = 'Off!';
-  }
-  else {
-    button.style.backgroundColor = 'inherit';
-    isOn = true;
-    document.getElementById('output').innerHTML = 'On!';
-  }
-}
+let currentPlayer = 1;
+let gameOver = false;
 
 window.onload = function () {
-  doStuff(document.getElementById('the-button'));
-
   document.querySelector('#tic-tac-toe').addEventListener('click', function (e) {
     const cell = e.target;
-    cell.className = 'on';
+    if (cell.className.indexOf('owned') > -1) {
+        return;
+    }
+
+    cell.className = `owned user${currentPlayer}`;
+    
+    changePlayer();
   });
+}
+
+
+function changePlayer() {
+  if (currentPlayer == 1) {
+    currentPlayer = 2;
+  }
+  else {
+    currentPlayer = 1;
+  } 
 }

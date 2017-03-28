@@ -25,6 +25,10 @@ table#tic-tac-toe tr td:last-child {
     border-right-width: 0px;
 }
 
-table#tic-tac-toe tr td.on {
+table#tic-tac-toe tr td.user1 {
+  background: blue;
+}
+
+table#tic-tac-toe tr td.user2 {
   background: red;
 }
