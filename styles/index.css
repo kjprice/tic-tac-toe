@@ -1,3 +1,7 @@
+html{
+  font-family: sans-serif;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -25,10 +29,16 @@ table#tic-tac-toe tr td:last-child {
     border-right-width: 0px;
 }
 
-table#tic-tac-toe tr td.user1 {
-  background: blue;
+table#tic-tac-toe tr td>div {
+  display: none;
+  font-size: 50px;
+  text-align: center;
 }
 
-table#tic-tac-toe tr td.user2 {
-  background: red;
+table#tic-tac-toe tr td.user1>div.player1 {
+  display: block;
+}
+
+table#tic-tac-toe tr td.user2>div.player2 {
+  display: block;
 }

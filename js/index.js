@@ -40,7 +40,6 @@ window.onload = function () {
 }
 
 function hasPlayerWon(currentPlayer) {
-  document.getElementById('output').innerHTML = currentPlayer + '<br/>';
   const table = document.querySelector('#tic-tac-toe');
   const rows = table.querySelectorAll('tr');
   const columns = [];
